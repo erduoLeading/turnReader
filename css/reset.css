@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body,html  {
+    min-width: 660px;
+    overflow:hidden;
+    width: 100%;
+    height: 100%;
+}
+body{
+    overflow:hidden;
+    background: url("../images/loading1.gif") no-repeat center/100% 100%;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+input{
+    outline: none;
+    -webkit-appearance: button;
+    -webkit-appearance: none;
+    border: none;
+}
+.show-active {
+    opacity: 1!important;
+    visibility: visible!important;
+}
+.select-active {
+    border: 2px solid blue;
+}
+.none-active {
+    display: none;
+}
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <!--<script src="js/jquery3.3.1.js"></script>-->
+    <script src="extra/jquery.min.1.7.js"></script>
+    <script src="extra/turn.js"></script>
+    <script src="extra/jweixin-1.0.0.js"></script>
+</head>
+<body>
+<!--<input type="hidden" value="分享到朋友圈的内容" id="friendGroupContent"/>-->
+<!--<input type="hidden" value="分享到朋友圈的图片路径" id="friendGroupsUrl"/>-->
+<!--<input type="hidden" value="分享到朋友圈的标题" id="friendGroupTittle"/>-->
+<!--<input type="hidden" value="分享到朋友圈的链接" id="friendGroupLink"/>-->
+
+    <div class="contanier" style="display: none;" >
+        <audio src="./voice/turnBook.wav" muted  >
+            您的浏览器不支持 audio 标签。
+        </audio>
+
+        <!--菜单-->
+        <div class="menu-wrapper">
+            <div class="init-menu menu">
+                <div class="magnify-btn">
+                    <img src="images/magnify.png" title="放大">
+                </div>
+                <div class="thumbnail-btn">
+                    <img src="images/thumbnail.png" title="缩略图">
+                </div>
+                <div class="play-btn">
+                    <img src="images/play.png" title="自动翻页">
+                </div>
+                <div class="first-btn">
+                    <img src="images/first.png" title="第一页">
+                </div>
+                <div class="pre-btn">
+                    <img src="images/pre.png" title="前一页">
+                </div>
+                <div class="page-input-wrapper">
+                    <input class="page-input" type="text"  size="10" value="1/6" >
+                </div>
+                <div class="next-btn">
+                    <img src="images/next.png" title="下一页">
+                </div>
+                <div class="last-btn">
+                    <img src="images/last.png" title="最后一页">
+                </div>
+                <div class="voice-btn">
+                    <img src="images/voice.png" alt=""  title="打开声音">
+                </div>
+                <div class="share-btn">
+                    <img src="images/share.png" alt="" title="朋友分享">
+                </div>
+                <div class="full-btn">
+                    <img src="images/fullScreen.png" alt="" title="全屏">
+                </div>
+                <div class="more-btn"  title="更多">
+                    <img data="more" src="images/more.png" alt="">
+                    <div class="extendedBar" >
+                        <div class="magnify-btn">
+                            <img src="images/magnify.png">
+                            <span>放大</span>
+                        </div>
+                        <div class="thumbnail-btn">
+                            <img src="images/thumbnail.png">
+                            <span>缩略图</span>
+                        </div>
+                        <div class="play-btn">
+                            <img src="images/play.png">
+                            <span>自动翻页</span>
+                        </div>
+                        <div class="voice-btn">
+                            <img src="images/voice.png" alt="">
+                            <span>打开声音</span>
+                        </div>
+                        <div class="share-btn">
+                            <img src="images/share.png" alt="">
+                            <span>朋友分享</span>
+                        </div>
+                        <div class="full-btn">
+                            <img src="images/fullScreen.png" alt="">
+                            <span>全屏</span>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="searchBar">-->
+                    <!--<div class="preSearchContent">-->
+                        <!--<input type="text" class="preSearch"-->
+                               <!--class="preSearch" size="16">-->
+                    <!--</div>-->
+                    <!--<div class="presearch-button" title="">-->
+                        <!--<img src="./images/search.png">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </div>
+
+        <!--书籍页面-->
+        <div id="zoom-viewport" class="flipbook-container">
+            <div id="flipbook" >
+                <!--<div >-->
+                    <!--<img src="pages/01.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div >-->
+                    <!--<img src="pages/02.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div >-->
+                    <!--<img src="pages/03.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div >-->
+                    <!--<img src="pages/04.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="hard">-->
+                    <!--<img src="pages/05.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="hard">-->
+                    <!--<img src="pages/06.jpg" alt="">-->
+                <!--</div>-->
+                <!--<div class="hard" style="background:url(pages/01.jpg) no-repeat center/100% 100%;"></div>-->
+                <!--<div class="hard" style="background:url(pages/02.jpg) no-repeat center/100% 100%;"></div>-->
+                <!--<div style="background:url(pages/03.jpg) no-repeat center/100% 100%;"></div>-->
+                <!--<div style="background:url(pages/04.jpg) no-repeat center/100% 100%;"></div>-->
+                <!--<div class="hard" style="background:url(pages/05.jpg) no-repeat center/100% 100%;"></div>-->
+                <!--<div class="hard" style="background:url(pages/06.jpg) no-repeat center/100% 100%;"></div>-->
+
+            </div>
+        </div>
+        <div class="watch-full">
+            点击查看全屏
+        </div>
+        <!--左右,首位页,举报,查看全屏按钮-->
+        <div class="btn-left ">
+            <img src="pages/last.png">
+        </div>
+        <div class="btn-right ">
+            <img src="pages/next.png">
+        </div>
+        <div class="first-btn bottom-first-btn ">
+            <img src="images/first.png">
+        </div>
+        <div class="last-btn bottom-last-btn ">
+            <img src="images/last.png">
+        </div>
+
+        <div class="first-page-tip">
+            这是第一页
+        </div>
+        <div class="end-page-tip">
+            这是最后一页
+        </div>
+        <!--分享盒子-->
+        <div class="share">
+            <div class="share-wrapper"></div>
+            <div class="share-box">
+                <div class="share-title">
+                    <h3 class="fl">分享</h3>
+                    <div class="close-btn fr">x</div>
+                </div>
+
+                <div class="share-middle">
+                    <div class="codeBox">
+                        <img src="data:image/png;base64,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">
+                    </div>
+                    <div class="icon-group">
+                        <div class="small-title">share it:</div>
+                        <a target="_blank" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://book.yunzhan365.com/dfbw/cdjx/mobile/index.html&amp;title=苏州领慧红色培训中心 V0" title="QQ空间">
+                            <img src="./images/qzone.ico">
+                        </a>
+                        <a target="_blank" href="http://v.t.sina.com.cn/share/share.php?url=https://book.yunzhan365.com/dfbw/cdjx/mobile/index.html&amp;title=苏州领慧红色培训中心 V0" title="新浪微博">
+                            <img src="./images/sina_weibo.ico">
+                        </a>
+                        <a target="_blank" href="http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;title=苏州领慧红色培训中心 V0&amp;url=https://book.yunzhan365.com/dfbw/cdjx/mobile/index.html" title="腾讯微博">
+                            <img src="./images/tencent_weibo.ico">
+                        </a>
+                        <a target="_blank" href="http://share.renren.com/share/buttonshare.do?link=https://book.yunzhan365.com/dfbw/cdjx/mobile/index.html&amp;title=苏州领慧红色培训中心 V0" title="人人网">
+                            <img src="./images/renren.ico">
+                        </a>
+                    </div>
+                </div>
+                <div class="link-Box">
+                    <input class="link-input fl" value="https://book.yunzhan365.com/dfbw/cdjx/mobile/index.html" >
+                    <div class="copy-button fl">复制</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--缩略图轮播-->
+        <div class="thumbnail-menu">
+            <div class="left-btn fl">
+                <img src="pages/last.png">
+            </div>
+            <div class="right-btn fl">
+                <img src="pages/next.png">
+            </div>
+            <div class="thumbnail-wrapper">
+                <div class="thumbnail">
+                    <div class="page  select-active" >
+                        <img src="./pages/01.jpg" width="47" height="76" alt="">
+                    </div>
+                    <div class="page  double-page" >
+                        <img src="./pages/02.jpg" width="50" height="76" alt="">
+                        <img src="./pages/03.jpg" width="50" height="76" alt="">
+                    </div>
+                    <div class="page  double-page " >
+                        <img src="./pages/04.jpg" width="50" height="76" alt="">
+                        <img src="./pages/05.jpg" width="50" height="76" alt="">
+                    </div>
+                    <div class="page " >
+                        <img src="./pages/06.jpg" width="47" height="76" alt="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="thumbnail-page-wrapper">
+                <div class="thumbnail-page-number">
+                    1/6
+                </div>
+            </div>
+        </div>
+
+        <!--缩放小菜单-->
+        <div class="scale-menu-wrapper none-active">
+            <div class="scale-menu">
+                <div class="add-btn">
+                    <img src="images/add.png">
+                </div>
+                <div class="minus-btn">
+                    <img src="images/minus.png">
+                </div>
+                <div class="shrink-btn">
+                    <img src="images/shrink.png">
+                </div>
+                <div class="pre-btn">
+                    <img src="images/pre.png">
+                </div>
+                <div class="next-btn scale-next-btn">
+                    <img src="images/next.png">
+                </div>
+                <div class="mouse-btn">
+                    <img src="images/mouse.png">
+                </div>
+            </div>
+        </div>
+
+        <!--右键菜单-->
+        <div class="context-menu">
+            <div class="share-wrapper1 share-btn">
+                <img class="share-icon fl" src="images/share1.png" alt="">
+                <span class="share-text fl">朋友分享</span>
+            </div>
+            <div class="margnify-wrapper1 magnify-btn">
+                <img class="margnify-icon fl" src="images/magnify1.png" alt="">
+                <span class="margnify-text fl">放大</span>
+            </div>
+            <div class="full-wrapper1 full-btn">
+                <img class="full-icon fl" src="images/fullScreen1.png" alt="">
+                <span class="full-text fl">全屏</span>
+            </div>
+            <div class="thumbnail-wrapper1 thumbnail-btn">
+                <img class="thumbnail-icon fl" src="images/thumbnail1.png" alt="">
+                <span class="thumbnail-text fl">缩略图</span>
+            </div>
+        </div>
+
+        <!--搜索菜单-->
+        <!--<div class="search-menu">-->
+            <!--<p class="search-title">-->
+                <!--<span>搜索</span>-->
+            <!--</p>-->
+            <!--<img class="search-close" src="images/close.png">-->
+            <!--<div class="search-content">-->
+                <!--<div class="search-input-wrapper">-->
+                    <!--<div class="search-input-content">-->
+                        <!--<input class="search-input">-->
+                    <!--</div>-->
+                    <!--<div class="search-button">-->
+                        <!--<img class="searchButton" src="images/search.png">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<p class="result">-->
+                    <!--&lt;!&ndash;<span class="page-number"></span>&ndash;&gt;-->
+                <!--</p>-->
+                <!--<div class="stage" >-->
+                    <!--<div class="swiper"></div>-->
+                    <!--<div class="progress">-->
+                        <!--<div class="progressBar"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--举报菜单-->
+
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="js/thumbnailMenu.js"></script>
+    <script src="js/scaleMenu.js"></script>
+    <script src="js/shareMenu.js"></script>
+    <script src="js/searchMenu.js"></script>
+</body>
+</html>
